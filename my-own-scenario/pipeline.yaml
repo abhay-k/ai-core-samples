@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: abhay-first-pipeline
+  labels:
+    scenarios.ai.sap.com/id: "abhay-learning"
+    ai.sap.com/version: "0.0.1"
+  annotations:
+    scenarios.ai.sap.com/name: "abhay-learning"
+    scenarios.ai.sap.com/description: "Abhay's Hello World Scenario"
+    executables.ai.sap.com/name: "abhay-hello-pipeline"
+    executables.ai.sap.com/description: "My first pipeline"
+spec:
+  imagePullSecrets:
+    - name: default
+  entrypoint: mytemplate
+  templates:
+    - name: mytemplate
+      container:
+        image: "docker.io/library/hello-world"
