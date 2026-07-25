@@ -11,8 +11,6 @@ metadata:
     executables.ai.sap.com/name: "abhay-hello-pipeline"
     executables.ai.sap.com/description: "My first pipeline"
 spec:
-  imagePullSecrets:
-    - name: default
   entrypoint: mytemplate
   templates:
     - name: mytemplate
