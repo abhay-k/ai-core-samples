@@ -16,3 +16,4 @@ spec:
     - name: mytemplate
       container:
         image: "docker.io/library/hello-world"
+        command: ["/hello"]
