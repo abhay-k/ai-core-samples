@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: abhay-byom-pipeline
+  labels:
+    scenarios.ai.sap.com/id: "abhay-byom-learning"
+    ai.sap.com/version: "0.0.1"
+  annotations:
+    scenarios.ai.sap.com/name: "abhay-byom-learning"
+    scenarios.ai.sap.com/description: "Abhay's BYOM Scenario"
+    executables.ai.sap.com/name: "abhay-byom-pipeline"
+    executables.ai.sap.com/description: "Train a scikit-learn model on Iris"
+spec:
+  entrypoint: mytemplate
+  templates:
+    - name: mytemplate
+      container:
+        image: "docker.io/n8nforabhay/aicore-byom-demo:v1"
+        command: ["python", "train.py"]
