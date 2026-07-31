@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: abhay-reorder-pipeline
+  labels:
+    scenarios.ai.sap.com/id: "abhay-reorder-learning"
+    ai.sap.com/version: "0.0.1"
+  annotations:
+    scenarios.ai.sap.com/name: "abhay-reorder-learning"
+    scenarios.ai.sap.com/description: "Abhay's Predictive Reorder Level Scenario"
+    executables.ai.sap.com/name: "abhay-reorder-pipeline"
+    executables.ai.sap.com/description: "Predict reorder levels from HANA sales history"
+spec:
+  entrypoint: mytemplate
+  templates:
+    - name: mytemplate
+      container:
+        image: "docker.io/n8nforabhay/aicore-reorder-demo:v1"
+        command: ["python", "predict_reorder.py"]
+        envFrom:
+          - secretRef:
+              name: hana-connection-secret
