@@ -17,6 +17,24 @@ spec:
       container:
         image: "docker.io/n8nforabhay/aicore-reorder-demo:v1"
         command: ["python", "predict_reorder.py"]
-        envFrom:
-          - secretRef:
-              name: hana-connection-secret
+        env:
+          - name: HANA_HOST
+            valueFrom:
+              secretKeyRef:
+                name: hana-connection-secret
+                key: HANA_HOST
+          - name: HANA_PORT
+            valueFrom:
+              secretKeyRef:
+                name: hana-connection-secret
+                key: HANA_PORT
+          - name: HANA_USER
+            valueFrom:
+              secretKeyRef:
+                name: hana-connection-secret
+                key: HANA_USER
+          - name: HANA_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: hana-connection-secret
+                key: HANA_PASSWORD
